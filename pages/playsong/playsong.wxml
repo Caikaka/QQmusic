@@ -1,0 +1,33 @@
+<view class='body'>
+  <view class='heder'>
+    <image class='tupin' src='{{imgurl}}'></image>
+    <view class='detail'>
+      <view class='gm'>{{musiclist.songname}}</view>
+      <view class='gsm'>{{musiclist.singer[0].name}}</view>
+    </view>
+    <image class='play' src="{{off ? '/images/icon-pause.png':'/images/icon-play.png'}}" bindtap='playmusic'>
+    </image>
+  </view>
+
+  <!-- 歌词 -->
+  <view class='lyic'>
+    <scroll-view scroll-y>
+      <view class='text'>
+        <view wx:for="{{lyc}}">{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 进度条 -->
+<view class='jdt'>
+  <view class='current text'>
+  {{currentPosition%60 >=1 ? curM : "0"}}
+  {{currentPosition <= 60 ? "0" : ""}}:{{currentPosition % 60 <10 ? "0" : ""}}
+  {{currentPosition % 60}}</view>
+  <view class='bar_yeye' bindtouchmove="ctrplaymusic">
+    <view class='bar'>
+      <view class='bar-child' style="width: {{eleWidth}}%"></view>
+    </view>
+  </view>
+  <view class='end text'>{{m}}:{{s}}</view>
+</view>
